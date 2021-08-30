@@ -1,0 +1,1 @@
+//If a request is made to a route that does not exist, the server returns a 404 error.

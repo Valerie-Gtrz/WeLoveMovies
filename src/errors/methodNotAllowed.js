@@ -1,0 +1,1 @@
+//If a request is made to a route that exists, but the HTTP method is wrong, a 405 error is returned.

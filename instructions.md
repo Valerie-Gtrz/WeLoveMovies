@@ -47,7 +47,8 @@ You will also need to make sure the following tasks are complete.
 - If a request is made to a route that does not exist, the server returns a 404 error.
 - If a request is made to a route that exists, but the HTTP method is wrong, a 405 error is returned.
 - All of your routes should respond with the appropriate status code and should use a data key in the response.
-- Database Tables
+
+## Database Tables
 - You will create five tables for this project. View the docs/tables/ folder in this project to get more detailed information on each table.
 - You will need to create migrations for each of these tables and run those migrations.
 
