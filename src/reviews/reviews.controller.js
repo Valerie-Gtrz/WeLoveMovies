@@ -12,17 +12,18 @@ async function reviewExists(req, res, next) {
   return next({ status: 404, message: "Review cannot be found." });
 }
 
-/*{
-  "score": 3,
-  "content": "New content..."
-}*/
 async function update(req, res) {
-  const newReview = { ...res.locals.foundReview, ...req.body.data };
+  //object with request body and review id matching the req params
+  const newReview = {
+    ...req.body.data,
+    review_id: res.locals.foundReview.review_id,
+  };
   await reviewsService.update(newReview);
-  const returnData = await reviewsService.reviewWithCriticDetails(
+  const reviewAndCritic = await reviewsService.reviewWithCriticDetails(
     res.locals.foundReview.review_id
   );
-  res.json({ data: returnData });
+
+  res.json({ data: reviewAndCritic });
 }
 
 async function destroy(req, res) {

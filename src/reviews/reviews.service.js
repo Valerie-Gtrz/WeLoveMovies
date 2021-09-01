@@ -7,17 +7,17 @@ const criticDetails = mapProperties({
   organization_name: "critic.organization_name",
 });
 
+
 function reviewWithCriticDetails(reviewId) {
   return knex("reviews as r")
     .join("critics as c", "r.critic_id", "c.critic_id")
     .select("*")
     .where({ review_id: reviewId })
     .first()
-    .then((result) => {
-      const newReview = criticDetails(result);
-      return newReview;
-    });
+    .then(criticDetails); 
 }
+
+
 
 function read(reviewId) {
   return knex("reviews").select("*").where({ review_id: reviewId }).first();
