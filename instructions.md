@@ -1,4 +1,5 @@
 # Project: WeLoveMovies
+
 You've been hired on as a back end developer for a new startup called WeLoveMovies! As another developer works on the design and front end experience, you have been tasked with setting up a database and building out specific routes so that users can gain access to data about movies, theaters, and reviews.
 
 **This project is designed to test your ability to both build complex servers and access data through a database. To succeed at this project, you'll need to demonstrate you can do the following:**
@@ -18,9 +19,10 @@ You've been hired on as a back end developer for a new startup called WeLoveMovi
 - You will not need to make any edits to HTML or CSS for this project.
 
 ## Project setup
+
 Follow the instructions below to get this project up and running on your own machine:
 
-*Note: This project will not deploy properly without additional configuration. You do NOT need to deploy it to finish this assignment.
+\*Note: This project will not deploy properly without additional configuration. You do NOT need to deploy it to finish this assignment.
 Sync this Qualified assignment with your computer.
 If you choose to work on this project disconnected from Qualified, run npm install.
 Some helper scripts have been added to the package.json file. You are welcome to modify these as you wish.
@@ -29,17 +31,21 @@ _Visit the following repository if you would like to see your project connected 
 [Starter Code: WeLoveMovies](https://github.com/Thinkful-Ed/starter-movie-front-end)
 
 ### Running tests
+
 To run the tests, you can run the following command:
 
 ### _npm test_
-*Note that the tests make use of an in-memory SQLite database.
 
-*NOTE When updating a record in an in-memory SQLite database, the server does not automatically respond with an array of updated records like PostgreSQL does. As a result, when updating a record you will need to query the database again to return updated record.
+\*Note that the tests make use of an in-memory SQLite database.
+
+\*NOTE When updating a record in an in-memory SQLite database, the server does not automatically respond with an array of updated records like PostgreSQL does. As a result, when updating a record you will need to query the database again to return updated record.
 
 ## <ins>Instructions</ins>
+
 You are tasked with both setting up the database and building a number of routes that will be used by the front end application. For this project, you will start by making the necessary changes to the data tier and then proceed to make changes to the application tier following an inside-out development workflow. Each table is detailed below as is each route.
 
 ### General tasks
+
 You will also need to make sure the following tasks are complete.
 
 - Your app.js file and server.js file are correctly configured, with your app.js file exporting the application created from Express.
@@ -49,6 +55,7 @@ You will also need to make sure the following tasks are complete.
 - All of your routes should respond with the appropriate status code and should use a data key in the response.
 
 ## Database Tables
+
 - You will create five tables for this project. View the docs/tables/ folder in this project to get more detailed information on each table.
 - You will need to create migrations for each of these tables and run those migrations.
 

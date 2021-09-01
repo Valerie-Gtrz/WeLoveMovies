@@ -30,17 +30,25 @@ async function read(req, res) {
 }
 
 //movies.theatresShowingMovie  ("/:movieId/theaters")
-async function theatresShowingMovie(req, res){
-    const data = await moviesService.listTheatersShowingMovie(res.locals.foundMovie.movie_id);
-    res.send({ data });
-  }
-
-
+async function theatresShowingMovie(req, res) {
+  const data = await moviesService.listTheatersShowingMovie(
+    res.locals.foundMovie.movie_id
+  );
+  res.send({ data });
+}
 
 //movies.reviewsForMovie  ("/:movieId/reviews")
+
+async function reviewsForMovie(req, res) {
+  const data = await moviesService.listReviewsForMovie(
+    res.locals.foundMovie.movie_id
+  );
+  res.send({ data });
+}
 
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(movieExists), read],
   theatresShowingMovie: [asyncErrorBoundary(movieExists), theatresShowingMovie],
+  reviewsForMovie: [movieExists, reviewsForMovie],
 };
