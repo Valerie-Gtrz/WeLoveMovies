@@ -3,7 +3,6 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 async function movieExists(req, res, next) {
   const foundMovie = await moviesService.read(req.params.movieId);
-  console.log("found movie", foundMovie);
   if (foundMovie) {
     res.locals.foundMovie = foundMovie;
     return next();

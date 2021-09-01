@@ -1,30 +1,36 @@
-/*GET /movies/:movieId/reviews
-Update your route so that it responds to the following request:
+const reviewsService = require("./reviews.service");
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
-GET /movies/:movieId/reviews
-This route should return all the reviews for the movie, including all the critic details added to a critic key of the review.
+async function reviewExists(req, res, next) {
+  //get reviewid from the query parameters
+  const { reviewId } = req.params;
+  const foundReview = await reviewsService.read(reviewId);
+  if (foundReview) {
+    res.locals.foundReview = foundReview;
+    return next();
+  }
+  return next({ status: 404, message: "Review cannot be found." });
+}
 
-The response from the server for a request to /movies/1/reviews should look like the following.
+/*{
+  "score": 3,
+  "content": "New content..."
+}*/
+async function update(req, res) {
+  const newReview = { ...res.locals.foundReview, ...req.body.data };
+  await reviewsService.update(newReview);
+  const returnData = await reviewsService.reviewWithCriticDetails(
+    res.locals.foundReview.review_id
+  );
+  res.json({ data: returnData });
+}
 
-{
-  "data": [
-    {
-      "review_id": 1,
-      "content": "Lorem markdownum ...",
-      "score": 3,
-      "created_at": "2021-02-23T20:48:13.315Z",
-      "updated_at": "2021-02-23T20:48:13.315Z",
-      "critic_id": 1,
-      "movie_id": 1,
-      "critic": {
-        "critic_id": 1,
-        "preferred_name": "Chana",
-        "surname": "Gibson",
-        "organization_name": "Film Frenzy",
-        "created_at": "2021-02-23T20:48:13.308Z",
-        "updated_at": "2021-02-23T20:48:13.308Z"
-      }
-    }
-    // ...
-  ]
-} */
+async function destroy(req, res) {
+  await reviewsService.destroy(res.locals.foundReview.review_id);
+  res.sendStatus(204);
+}
+
+module.exports = {
+  update: [asyncErrorBoundary(reviewExists), asyncErrorBoundary(update)],
+  delete: [asyncErrorBoundary(reviewExists), asyncErrorBoundary(destroy)],
+};
