@@ -1,4 +1,4 @@
-# Project description: WeLoveMovies
+# Project Description: WeLoveMovies
 ### Set up a database and build out specific routes so that users can gain access to data about movies, theaters, and reviews.
 
 [GitHub](http://github.com)
@@ -26,7 +26,7 @@
 - If a request is made to a route that exists but the HTTP method is wrong, the server returns a 405 error.
 - All routes respond with the appropriate status code and use a data key in the response.
 
-## <ins>Screenshots</ins>
+## Screenshots
 
 ###  Home Page
 This page lists all movies currently showing in theaters. Clicking on the image or title of the film routes the user to that movie's page with more information about the movie including reviews and showtimes.
